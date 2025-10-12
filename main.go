@@ -8,23 +8,28 @@ import (
 
 func main() {
 
-	// arrays
-	var a [5]int
-	fmt.Println("emp:", a)
+	// slices
+	var s [] string
+	fmt.Println("initial:", s, s==nil, len(s) ==0)
+	
 
-	a[4] = 100
-	fmt.Println("set:", a)    // set the value of index 4 - also printing out the value of whole array
-	fmt.Println("get:", a[4]) // get the value of index 4
-	fmt.Println("len:", len(a))
+	// // arrays
+	// var a [5]int
+	// fmt.Println("emp:", a)
 
-	b := [5]int{1, 3, 5, 7, 9}
-	fmt.Println("dlc:", b)
+	// a[4] = 100
+	// fmt.Println("set:", a)    // set the value of index 4 - also printing out the value of whole array
+	// fmt.Println("get:", a[4]) // get the value of index 4
+	// fmt.Println("len:", len(a))
 
-	c := [...]int{1, 2, 4, 5, 6}
-	fmt.Println("idx:", c)
+	// b := [5]int{1, 3, 5, 7, 9}
+	// fmt.Println("dlc:", b)
 
-	v := [...]int{3, 4: 500, 599}
-	fmt.Println(v)
+	// c := [...]int{1, 2, 4, 5, 6}
+	// fmt.Println("idx:", c)
+
+	// v := [...]int{3, 4: 500, 599}
+	// fmt.Println(v)
 
 	// // // switch statements
 	// i := 1
