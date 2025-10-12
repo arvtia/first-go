@@ -12,7 +12,19 @@ func main() {
 	var a [5]int
 	fmt.Println("emp:", a)
 
-	
+	a[4] = 100
+	fmt.Println("set:", a)    // set the value of index 4 - also printing out the value of whole array
+	fmt.Println("get:", a[4]) // get the value of index 4
+	fmt.Println("len:", len(a))
+
+	b := [5]int{1, 3, 5, 7, 9}
+	fmt.Println("dlc:", b)
+
+	c := [...]int{1, 2, 4, 5, 6}
+	fmt.Println("idx:", c)
+
+	v := [...]int{3, 4: 500, 599}
+	fmt.Println(v)
 
 	// // // switch statements
 	// i := 1
