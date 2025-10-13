@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"slices"
 )
 
 // const s string = "constant"
@@ -9,9 +10,52 @@ import (
 func main() {
 
 	// slices
-	var s [] string
-	fmt.Println("initial:", s, s==nil, len(s) ==0)
-	
+	var s []string
+	fmt.Println("initial:", s, s == nil, len(s) == 0)
+
+	s = make([]string, 4)
+	fmt.Println("emp:", s, "len:", len(s), "cap:", cap(s))
+
+	s[0] = "a"
+	s[1] = "b"
+	s[2] = "c"
+	s[3] = "d"
+	fmt.Println("Set:", s)
+	fmt.Println("Get:", s[2])
+	fmt.Println("Len:", len(s))
+
+	s = append(s, "e", "f")
+	fmt.Println("Append: ", s)
+
+	c := make([]string, len(s))
+	copy(c, s)
+	fmt.Println("cpy:", c)
+
+	l := s[2:4]
+	fmt.Println("sl1:", l)
+	l = s[:5] // everying excluding from 5 and above
+	fmt.Println("sl2:", l)
+	l = s[2:] // everying excluding 0 - 2
+	fmt.Println("sl3:", l)
+
+	t := []string{"g", "h", "i"}
+	fmt.Println("dcl", t)
+	t2 := []string{"j", "k", "l", "m", "n"}
+	if slices.Equal(t, t2) {
+		fmt.Println("t == t2")
+	} else {
+		fmt.Println("t != t2")
+	}
+
+	twoD := make([][]int, 5)
+	for i := range 5 {
+		innerlen := i + 1
+		twoD[i] = make([]int, innerlen)
+		for j := range innerlen {
+			twoD[i][j] = i + j
+		}
+	}
+	fmt.Println("2d: ", twoD)
 
 	// // arrays
 	// var a [5]int
