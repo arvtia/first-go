@@ -2,60 +2,95 @@ package main
 
 import (
 	"fmt"
-	"slices"
+	
 )
 
 // const s string = "constant"
 
 func main() {
 
-	// slices
-	var s []string
-	fmt.Println("initial:", s, s == nil, len(s) == 0)
+	// // maps - in go
 
-	s = make([]string, 4)
-	fmt.Println("emp:", s, "len:", len(s), "cap:", cap(s))
+	// m := make(map[string]int)
+	// m["k1"] = 7
+	// m["k2"] = 13
 
-	s[0] = "a"
-	s[1] = "b"
-	s[2] = "c"
-	s[3] = "d"
-	fmt.Println("Set:", s)
-	fmt.Println("Get:", s[2])
-	fmt.Println("Len:", len(s))
+	// fmt.Println("map:", m)
+	// v1 := m["k1"]
+	// fmt.Println("v1:", v1)
 
-	s = append(s, "e", "f")
-	fmt.Println("Append: ", s)
+	// v3 := m["k3"]
+	// fmt.Println("v3:", v3)
 
-	c := make([]string, len(s))
-	copy(c, s)
-	fmt.Println("cpy:", c)
+	// fmt.Println("len:", len(m))
 
-	l := s[2:4]
-	fmt.Println("sl1:", l)
-	l = s[:5] // everying excluding from 5 and above
-	fmt.Println("sl2:", l)
-	l = s[2:] // everying excluding 0 - 2
-	fmt.Println("sl3:", l)
+	// delete(m, "k2")
+	// fmt.Println(m)
+	// m["k4"] = 22
+	// fmt.Println("len:", len(m))
+	// fmt.Println(m)
 
-	t := []string{"g", "h", "i"}
-	fmt.Println("dcl", t)
-	t2 := []string{"j", "k", "l", "m", "n"}
-	if slices.Equal(t, t2) {
-		fmt.Println("t == t2")
-	} else {
-		fmt.Println("t != t2")
-	}
+	// clear(m)
 
-	twoD := make([][]int, 5)
-	for i := range 5 {
-		innerlen := i + 1
-		twoD[i] = make([]int, innerlen)
-		for j := range innerlen {
-			twoD[i][j] = i + j
-		}
-	}
-	fmt.Println("2d: ", twoD)
+	// _, prs := m["k2"]
+	// fmt.Println("prs:", prs)
+
+	// n := map[string]int{"foo": 1, "bar": 2}
+	// fmt.Println("map:", n)
+
+	// n2 := map[string]int{"Foo": 1, "bar": 2}
+
+	// if maps.Equal(n, n2) {
+	// 	fmt.Println("n==n2")
+	// }
+
+	// // slices
+	// var s []string
+	// fmt.Println("initial:", s, s == nil, len(s) == 0)
+
+	// s = make([]string, 4)
+	// fmt.Println("emp:", s, "len:", len(s), "cap:", cap(s))
+
+	// s[0] = "a"
+	// s[1] = "b"
+	// s[2] = "c"
+	// s[3] = "d"
+	// fmt.Println("Set:", s)
+	// fmt.Println("Get:", s[2])
+	// fmt.Println("Len:", len(s))
+
+	// s = append(s, "e", "f")
+	// fmt.Println("Append: ", s)
+
+	// c := make([]string, len(s))
+	// copy(c, s)
+	// fmt.Println("cpy:", c)
+
+	// l := s[2:4]
+	// fmt.Println("sl1:", l)
+	// l = s[:5] // everying excluding from 5 and above
+	// fmt.Println("sl2:", l)
+	// l = s[2:] // everying excluding 0 - 2
+	// fmt.Println("sl3:", l)
+
+	// t := []string{"g", "h", "i"}
+	// fmt.Println("dcl", t)
+	// t2 := []string{"j", "k", "l", "m", "n"}
+	// if slices.Equal(t, t2) {
+	// 	fmt.Println("t == t2")
+	// } else {
+	// 	fmt.Println("t != t2")
+	// }
+
+	// twoD := make([][]int, 5)
+	// for i := range 5 {
+	// 	innerlen := i + 1
+	// 	twoD[i] = make([]int, innerlen)
+	// 	for j := range innerlen {
+	// 		twoD[i][j] = i + j
+	// 	}
+	// }
+	// fmt.Println("2d: ", twoD)
 
 	// // arrays
 	// var a [5]int
