@@ -21,8 +21,9 @@ func main() {
 	res := plus(1, 2)
 	fmt.Println(res)
 
-	res2 := plusPlus(1, 3, 55)
-	fmt.Println(res2)
+	res = plusPlus(1, 3, 55)
+	fmt.Println(res)
+	
 
 	// // maps - in go
 
