@@ -2,12 +2,27 @@ package main
 
 import (
 	"fmt"
-	
 )
 
 // const s string = "constant"
 
+func plus(a int, b int) int {
+	return a + b
+}
+
+func plusPlus(a, b, c int) int {
+	return a + b + c
+}
+
 func main() {
+
+	// functions
+
+	res := plus(1, 2)
+	fmt.Println(res)
+
+	res2 := plusPlus(1, 3, 55)
+	fmt.Println(res2)
 
 	// // maps - in go
 
