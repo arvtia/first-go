@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 // const s string = "constant"
@@ -14,16 +15,236 @@ func plusPlus(a, b, c int) int {
 	return a + b + c
 }
 
+// func vals() (int, int) {
+// 	return 3, 7
+// }
+
+func sum(num ...int) {
+	fmt.Println(num, " ")
+	total := 0
+
+	for _, num := range num {
+		total += num
+	}
+	fmt.Println(total)
+}
+
+// // closures
+// func intSeq() func() int {
+// 	i := 0
+// 	return func() int {
+// 		i++
+// 		return i
+// 	}
+// }
+
+func zeroval(ival int) {
+	ival = 0
+}
+
+func zeroptr(iptr *int) {
+	*iptr = 0
+}
+
+type Person struct {
+	Name  string
+	Age   int
+	Email string
+}
+
+func newPerson(name string) *Person {
+
+	p := Person{Name: name}
+	p.Age = 22
+	return &p
+}
+
+type rect struct {
+	width, height float64
+}
+
+// func (r *rect) area() int {
+// 	return r.width * r.height
+// }
+
+// func (r rect) perim() int {
+// 	return 2*r.width + 2*r.height
+// }
+
+type geometry interface {
+	area() float64
+	perim() float64
+}
+
+type circle struct {
+	radius float64
+}
+
+func (c circle) area() float64 {
+	return math.Pi * c.radius * c.radius
+}
+func (r rect) area() float64 {
+	return r.width * r.height
+}
+
+func (c circle) perim() float64 {
+	return 2 * math.Pi * c.radius
+}
+func (r rect) perim() float64 {
+	return 2*r.width + 2*r.height
+}
+
+func measure(g geometry) {
+	fmt.Println(g)
+	fmt.Println(g.area())
+	fmt.Println(g.perim())
+}
+
+func detectCirlce(g geometry) {
+	if c, ok := g.(circle); ok {
+		fmt.Println("circle with radius", c.radius)
+	}
+}
+
+type serverState int
+
+const (
+	StateIdle serverState = iota
+	StateConnected
+	StateError
+	StateRetrying
+)
+
+var stateName = map[serverState]string{
+	StateIdle:      "idle",
+	StateConnected: "connected",
+	StateError:     "error",
+	StateRetrying:  "retrying",
+}
+
+func (ss serverState) String() string {
+	return stateName[ss]
+}
+
+func transition(s serverState) serverState {
+	switch s {
+	case StateIdle:
+		return StateConnected
+	case StateConnected:
+		return StateError
+	case StateError:
+		return StateRetrying
+	case StateRetrying:
+		return StateIdle
+	default:
+		panic(fmt.Errorf("unknown state: %s", s))
+	}
+}
+
 func main() {
 
-	// functions
+	ns := transition(StateIdle)
+	fmt.Println(ns)
 
-	res := plus(1, 2)
-	fmt.Println(res)
+	ns2 := transition(ns)
+	fmt.Println(ns2)
 
-	res = plusPlus(1, 3, 55)
-	fmt.Println(res)
-	
+	// r := rect{width: 3, height: 8}
+	// c := circle{radius: 5}
+	// measure(r)
+	// measure(c)
+
+	// detectCirlce(c)
+	// detectCirlce(r)
+
+	// interfaces in go -
+	//  interfaces are named collection of methods signatures
+
+	// r := rect{width: 10, height: 20}
+	// fmt.Println("area: ", r.area())
+
+	// fmt.Println("perim: ", r.perim())
+	//  methods
+
+	// fmt.Println(Person{"bob", 29, "bob@gmail.com"})
+	// fmt.Println(Person{"italic", 16, "itlaic@gmail.com"})
+
+	// const s = "こんにちは"
+
+	// fmt.Println("Len:", len(s))
+
+	// for i := 0; i < len(s); i++ {
+	// 	fmt.Printf("%x ", s[i])
+	// }
+	// fmt.Println()
+
+	// // pointers
+	// i := 1
+	// fmt.Println("inital", i)
+
+	// zeroval(i)
+	// fmt.Println("zeroval", i)
+
+	// zeroptr(&i)
+	// fmt.Println("zeroptr", i)
+
+	// fmt.Println("pointer:", &i)
+
+	// range over built in types
+
+	// nums := []int{2, 3, 4}
+	// sum := 0
+	// for _, num := range nums {
+	// 	sum += num
+	// }
+	// fmt.Println("sum:", sum)
+
+	// for i, num := range nums {
+	// 	if num == 3 {
+	// 		fmt.Println("index: ", i)
+	// 	}
+	// }
+
+	// kvs := map[string]string{"a": "apple", "b": "banana"}
+	// for k, v := range kvs {
+	// 	fmt.Printf("%s -> %s\n", k, v)
+	// }
+
+	// for k := range kvs {
+	// 	fmt.Println("key", k)
+
+	// }
+
+	// // variadic functions
+	// sum(11, 44)
+	// sum(3, 4, 5)
+
+	// nums := []int{1, 2, 3, 4}
+	// sum(nums...)
+
+	// nextInt := intSeq()
+
+	// fmt.Println(nextInt())
+	// fmt.Println(nextInt())
+	// fmt.Println(nextInt())
+
+	// // multliple values return
+	// a, b := vals()
+	// fmt.Println(a)
+	// fmt.Println(b)
+
+	// d, _ := vals()
+	// fmt.Println(d)
+
+	// // functions
+
+	// res := plus(1, 2)
+	// fmt.Println(res)
+
+	// res = plusPlus(1, 3, 55)
+	// fmt.Println(res)
+
+	//
 
 	// // maps - in go
 
